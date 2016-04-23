@@ -82,7 +82,7 @@ static BOOL GetAdTrackingEnabled()
 {
     if (self = [super init]) {
         self.configuration = [analytics configuration];
-        self.apiURL = [NSURL URLWithString:@"https://z1tc2j2ub9.execute-api.eu-west-1.amazonaws.com/prod/import"];
+        self.apiURL = [NSURL URLWithString:@"https://1umnef6ty6.execute-api.eu-west-1.amazonaws.com/prod/import"]; 
         self.anonymousId = [self getAnonymousId:NO];
         self.userId = [self getUserId];
         self.bluetooth = [[SEGBluetooth alloc] init];

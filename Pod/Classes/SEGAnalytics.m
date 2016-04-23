@@ -396,29 +396,15 @@ NSString *SEGAnalyticsIntegrationDidStart = @"io.segment.analytics.integration.d
 
 - (void)refreshSettings
 {
-    if (_settingsRequest)
-        return;
+    seg_dispatch_specific_async(_serialQueue, ^{
+    
+    [self setCachedSettings:@{
+                              @"integrations": @{@"Segment.io":@{@"apiKey":@"0ozmoXGcFGD87lH1ua7riwxDiYyC5cIH"}},
+                              @"plan": @{ @"track":@{}},
+                              }];
+  });
 
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://cdn.segment.com/v1/projects/%@/settings", self.configuration.writeKey]]];
-    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-    [urlRequest setHTTPMethod:@"GET"];
-
-    SEGLog(@"%@ Sending API settings request: %@", self, urlRequest);
-
-    _settingsRequest = [SEGAnalyticsRequest startWithURLRequest:urlRequest
-                                                     completion:^{
-                                                         seg_dispatch_specific_async(_serialQueue, ^{
-                                                             SEGLog(@"%@ Received API settings response: %@", self, _settingsRequest.responseJSON);
-
-                                                             if (_settingsRequest.error == nil) {
-                                                                 [self setCachedSettings:_settingsRequest.responseJSON];
-                                                             }
-
-                                                             _settingsRequest = nil;
-                                                         });
-                                                     }];
 }
-
 #pragma mark - Class Methods
 
 + (instancetype)sharedAnalytics
