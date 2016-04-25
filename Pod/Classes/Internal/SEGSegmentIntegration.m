@@ -82,7 +82,7 @@ static BOOL GetAdTrackingEnabled()
 {
     if (self = [super init]) {
         self.configuration = [analytics configuration];
-        self.apiURL = [NSURL URLWithString:@"https://config.smoke.string.co/v1/import"]; 
+        self.apiURL = [NSURL URLWithString:@"https://analytics.smoke.string.co/v1/import"]; 
         self.anonymousId = [self getAnonymousId:NO];
         self.userId = [self getUserId];
         self.bluetooth = [[SEGBluetooth alloc] init];
