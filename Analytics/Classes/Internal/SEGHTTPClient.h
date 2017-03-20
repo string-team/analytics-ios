@@ -7,7 +7,7 @@
 //#define SEGMENT_CDN_BASE [NSURL URLWithString:@"https://cdn-segment-com-5fsaj1xnikhp.runscope.net/v1"]
 //#define MOBILE_SERVICE_BASE [NSURL URLWithString:@"https://mobile--service-segment-com-5fsaj1xnikhp.runscope.net/v1"]
 
-// This is now parametrised
+// This is now parametrised via the endpoint argument to SEGAnalyticsConfiguration 
 //#define SEGMENT_API_BASE [NSURL URLWithString:@"https://api.segment.io/v1"]
 
 #define SEGMENT_CDN_BASE [NSURL URLWithString:@"https://cdn-settings.segment.com/v1"]
