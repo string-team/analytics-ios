@@ -549,8 +549,9 @@ static NSString *const kSEGAnonymousIdFilename = @"segment.anonymousId";
 {
     switch (context.eventType) {
         case SEGEventTypeIdentify: {
-            SEGIdentifyPayload *p = (SEGIdentifyPayload *)context.payload;
-            [self identify:p.userId traits:p.traits options:p.options];
+            //SEGIdentifyPayload *p = (SEGIdentifyPayload *)context.payload;
+            //[self identify:p.userId traits:p.traits options:p.options];
+            SEGLog(@"SEGIntegrationsManager: Not handling SEGEventTypeIdentify");
             break;
         }
         case SEGEventTypeTrack: {
