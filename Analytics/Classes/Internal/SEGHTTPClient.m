@@ -45,10 +45,10 @@
     };
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
 
-		NSURL *urlEndpoint = [NSURL URLWithString:endpoint];
-    NSURL *url = [urlEndpoint URLByAppendingPathComponent:@"batch"];
-    NSMutableURLRequest *request = self.requestFactory(url);
-
+    NSURL *urlEndpoint = [NSURL URLWithString:endpoint];
+    SEGLog(@"Using endpoint %@", endpoint);
+    NSMutableURLRequest *request = self.requestFactory(urlEndpoint);
+	
     // This is a workaround for an IOS 8.3 bug that causes Content-Type to be incorrectly set
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 

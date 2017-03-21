@@ -30,7 +30,7 @@
 {
     if (self = [self init]) {
         self.writeKey = writeKey;
-			self.endpoint = endpoint;
+        self.endpoint = endpoint;
     }
     return self;
 }
