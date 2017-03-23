@@ -188,11 +188,15 @@ static CTTelephonyNetworkInfo *_telephonyNetworkInfo;
         dict[@"network"] = @{ @"carrier" : carrier.carrierName };
 #endif
 
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    // Pixels
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
+    NSLog(@"Segment : UIScreen bounds*scale w,h=%f,%f", screenSize.width, screenSize.height);
     dict[@"screen"] = @{
-        @"width" : @(screenSize.width),
-        @"height" : @(screenSize.height)
-    };
+                        @"width_pixels" : @(screenSize.width),
+                        @"height_pixels" : @(screenSize.height)
+                        };
 
 #if !(TARGET_IPHONE_SIMULATOR)
     Class adClient = NSClassFromString(SEGADClientClass);
