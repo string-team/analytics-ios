@@ -189,13 +189,11 @@ static CTTelephonyNetworkInfo *_telephonyNetworkInfo;
 #endif
 
     // Pixels
-    CGFloat screenScale = [[UIScreen mainScreen] scale];
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
-    NSLog(@"Segment : UIScreen bounds*scale w,h=%f,%f", screenSize.width, screenSize.height);
+    CGSize nativeBounds = [UIScreen mainScreen].nativeBounds.size;
+    NSLog(@"Segment UIScreen.nativeScreenBounds w,h=%f,%f", nativeBounds.width,nativeBounds.height);
     dict[@"screen"] = @{
-                        @"width_pixels" : @(screenSize.width),
-                        @"height_pixels" : @(screenSize.height)
+                        @"width_pixels" : @(nativeBounds.width),
+                        @"height_pixels" : @(nativeBounds.height)
                         };
 
 #if !(TARGET_IPHONE_SIMULATOR)
